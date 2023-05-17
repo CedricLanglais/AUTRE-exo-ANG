@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Friends</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>My Friends</h1>
+  <div class="friend" id="friend1">
+    <h2 id="name1">John</h2>
+    <p>My name is John and I love playing video games and watching movies.</p>
+    <button onclick="addLike(1)">Like</button>
+  </div>
+
+  <div class="friend" id="friend2">
+    <h2 id="name2">Emily</h2>
+    <p>My name is Emily and I'm a big fan of hiking and exploring new places.</p>
+    <button onclick="addLike(2)">Like</button>
+  </div>
+
+  <div class="friend" id="friend3">
+    <h2 id="name3">Mike</h2>
+    <p>My name is Mike and I enjoy playing guitar and listening to music.</p>
+    <button onclick="addLike(3)">Like</button>
+  </div>
+  <!-- Début du button removeLike des personnes -->
+  <div class="friend" id="friend11">
+    <h2 id="name1">John</h2>
+    <button onclick="john.removeLike()">Remove Like</button>
+  </div>
+
+  <div class="friend" id="friend22">
+    <h2 id="name2">Emily</h2>
+    <button onclick="emily.removeLike()">Remove Like</button>
+  </div>
+
+  <div class="friend" id="friend33">
+    <h2 id="name3">Mike</h2>
+    <button onclick="mike.removeLike()">Remove Like</button>
+  </div>
+  <!-- Fin des buttons removeLike des personnes-->
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Likes</th>
+    </tr>
+    <tr>
+      <td id="friendName1">John</td>
+      <td id="likes1">0</td>
+    </tr>
+    <tr>
+      <td id="friendName2">Emily</td>
+      <td id="likes2">0</td>
+    </tr>
+    <tr>
+      <td id="friendName3">Mike</td>
+      <td id="likes3">0</td>
+    </tr>
+  </table>
+  <script src="friends.js"></script>
+</body>
+
+</html>
