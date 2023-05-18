@@ -27,7 +27,6 @@ class Friend {
             console.log("on a 0 like");
         }
     }
-
 }
 
 let john = new Friend(1, 'John', 'John est un ami proche de feur');
