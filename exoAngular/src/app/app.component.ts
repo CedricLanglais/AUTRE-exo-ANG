@@ -9,53 +9,50 @@ import { Friend } from './friend';
 export class AppComponent {
   title = 'exoAngular';
   friends: Friend[] = [];
-  
+  apiAddress= "https://jsonplaceholder.typicode.com/";
+
   constructor(){
-    let john = new Friend(1, 'John', 'John est un ami proche de feur');
-    let emily = new Friend(2, 'Emily', 'Emily est une amie de feur wtf?');
-    let mike = new Friend(3, 'Mike', 'Mike est un ami de andonigger.');
-
-    this.friends.push(john);
-    this.friends.push(emily);
-    this.friends.push(mike);
-
+    for (let i=1; i<10; i++){
+      fetch(this.apiAddress + "users/" + i)
+      .then(response => response.json())
+      .then(json => this.friends.push(new Friend(json.id, json.name, json.email)));
+    }
   }
 
   updateLikeDisplay() {
+    let maxLikes = 0;
     for (let i = 0; i < this.friends.length; i++) {
+        let monSuperString = "Mon nombre de like est : "
         let friend = this.friends[i];
         let likesElement = document.getElementById("likes" + friend.id);
-        let maxLikes = 0;
-        let maxLikesFriend = null;
         let nameElement = document.getElementById("likes" + friend.id);
 
         console.log("Getting the following id :" + i+1);
         if (likesElement!= undefined) {
-          likesElement.textContent = friend.likes.toString();
+          likesElement.textContent = monSuperString + friend.likes.toString();
         }
         else {
           console.log("Could not get likesElement");
         }
         if (friend.likes > maxLikes) {
             maxLikes = friend.likes;
-            maxLikesFriend = friend;
-        }
-        
-        if (nameElement!= undefined) {
-          nameElement.style.fontWeight = (friend === maxLikesFriend ? 'bold' : 'normal');
         }
     }
     for (let i = 0; i < this.friends.length; i++) {
+        let friend = this.friends[i];
+        let nameElement = document.getElementById("likes" + friend.id);
+        if (nameElement!= undefined) {
+          nameElement.style.fontWeight = (friend.likes === maxLikes ? 'bold' : 'normal');
+        }
     }
 }
 
-addLike(id: number){ 
+addLike(id: number){
     this.friends[id-1].addLike();
+    this.updateLikeDisplay();
 }
 removeLike(id:number){
   this.friends[id-1].removeLike();
-
+  this.updateLikeDisplay();
 }
-
-
 }

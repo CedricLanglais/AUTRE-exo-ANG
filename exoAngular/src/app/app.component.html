@@ -6,6 +6,7 @@
     <p>My name is {{friend.name}} and {{friend.paragraphe}}</p>
     <button (click)="addLike(friend.id)">Like</button>
     <button (click)="removeLike(friend.id)">Remove Like</button>
+    <p id="likes{{friend.id}}" class="nbLike"> Le nombre de like est : </p>
   </div>
 </div>
 <router-outlet></router-outlet>
